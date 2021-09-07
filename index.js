@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
-const testArray = require('./array.js')
+const fs = require('fs');
 const Employee = require('./Employee')
 const Manager = require('./Manager')
 const Engineer = require('./Engineer')
@@ -9,45 +8,44 @@ const Intern = require('./Intern')
 
 inquirer
   .prompt([
-    //   {
-    //       type: 'loop',
-    //       message: 'Do you want to add a new team member?',
-    //       name: 'loopyLoop',
-    //       questions: [
-    //           {
-    //               type: 'list',
-    //               message: 'Choose a team member option to add:',
-    //               name: 'teamOptions',
-    //               choices: ['Manager', 'Engineer', 'Intern']
-    //           },
-    //           {
-    //               type: 'input',
-    //               message: "Enter the team manager's name, employee ID, email address, and office number. (Separate with a comma)",
-    //               name: 'manager',
-    //               when: (answers) => answers.teamOptions === 'Manager'
-    //           },
-    //           {
-    //               type: 'input',
-    //               message: "Enter the engineer's name, ID, email, and GitHub username. (Separate with a comma)",
-    //               name: 'engineer',
-    //               when: (answers) => answers.teamOptions === 'Engineer'
-    //           },
-    //           {
-    //               type: 'input',
-    //               message: "Enter the intern's name, ID, email, and GitHub username. (Separate with a comma)",
-    //               name: 'intern',
-    //               when: (answers) => answers.teamOptions === 'Intern'
-    //           },
-    //       ]
-    //   }
+      {
+          type: 'loop',
+          message: 'Do you want to add a new team member?',
+          name: 'optionsLoop',
+          questions: [
+              {
+                  type: 'list',
+                  message: 'Choose a team member option to add:',
+                  name: 'teamOptions',
+                  choices: ['Manager', 'Engineer', 'Intern']
+              },
+              {
+                  type: 'input',
+                  message: "Enter the team manager's name, employee ID, email address, and office number. (Separate with a comma)",
+                  name: 'manager',
+                  when: (answers) => answers.teamOptions === 'Manager'
+              },
+              {
+                  type: 'input',
+                  message: "Enter the engineer's name, ID, email, and GitHub username. (Separate with a comma)",
+                  name: 'engineer',
+                  when: (answers) => answers.teamOptions === 'Engineer'
+              },
+              {
+                  type: 'input',
+                  message: "Enter the intern's name, ID, email, and GitHub username. (Separate with a comma)",
+                  name: 'intern',
+                  when: (answers) => answers.teamOptions === 'Intern'
+              },
+          ]
+      }
   ])
   .then((answers) => {
     const contentCardsArray = []
-
-    const teamList = testArray.loopyLoop
+    const teamList = answers.optionsLoop
 
     const newManagerCard = (manager) => {
-        const content = `<div class="content">
+        const content = `       <div class="content">
             <div class="card-header">
                 <h1 class="name">${manager.name}</h1>
             </div>
@@ -61,7 +59,7 @@ inquirer
     }
 
     const newEngineerCard = (engineer) => {
-          const content = `        <div class="content">
+          const content = `      <div class="content">
             <div class="card-header">
                 <h1 class="name">${engineer.name}</h1>
             </div>
@@ -70,7 +68,7 @@ inquirer
                 <p>Email: ${engineer.email}</p>
                 <p>GitHub: ${engineer.github}</p>
             </div>
-          </div>`
+        </div>`
         contentCardsArray.push(content)
     }
 
@@ -121,7 +119,7 @@ inquirer
 
     <div class="container">
 
-        ${contentCards}
+${contentCards}
 
     </div>
       
