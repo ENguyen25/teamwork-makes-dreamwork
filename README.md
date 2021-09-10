@@ -11,6 +11,8 @@ Through this project, I learned how to use Inquirer, and improved my proficiency
 2. Install NPM.
 3. Execute the index.js file with Node. 
 
+Link to demo: https://drive.google.com/file/d/1wqLWQYjK0dn3AcHwxaO6R0E0KisnWUXm/view
+
 
 ## License
 MIT License
